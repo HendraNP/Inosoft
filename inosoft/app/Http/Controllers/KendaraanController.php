@@ -14,7 +14,11 @@ class KendaraanController extends Controller
     }
 
     public function getStok($id){
-        return Kendaraan::where('id', '=', intval($id))->get(['Stok']);
+        return Kendaraan::where('id', '=', intval($id))->get(['id','Stok','Motor','Mobil'])->first();
+    }
+
+    public function soldReport(){
+        return Kendaraan::get(['id','Sold','Motor','Mobil']);
     }
 
     public function soldItem(Request $request, $id){

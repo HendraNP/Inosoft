@@ -28,4 +28,5 @@ Route::get('/token', function (Request $request) {
 
 Route::get('/Kendaraan/show/{id}', 'App\Http\Controllers\KendaraanController@show');
 Route::get('/Kendaraan/getStok/{id}', 'App\Http\Controllers\KendaraanController@getStok');
+Route::get('/Kendaraan/soldReport', 'App\Http\Controllers\KendaraanController@soldReport');
 Route::put('/Kendaraan/soldItem/{id}', 'App\Http\Controllers\KendaraanController@soldItem');
