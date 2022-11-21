@@ -1,21 +1,10 @@
 <?php
-
-namespace App\Http\Controllers;
+use App/Repositories;
 use App\Interfaces\KendaraanRepositoryInterface;
+use App/Models/Kendaraan;
 
-use Illuminate\Http\Request;
-use DB;
-
-class KendaraanController extends Controller
-{
-    private KendaraanRepositoryInterface $kendaraanRepository;
-
-    public function __construct(KendaraanRepositoryInterface $kendaraanRepository) 
-    {
-        $this->kendaraanRepository = $kendaraanRepository;
-    }
-    
-    public function show($id)
+interface KendaraanRepository(){
+	public function show($id)
     {
         return Kendaraan::where('id', '=', intval($id))->first();
     }
@@ -46,3 +35,4 @@ class KendaraanController extends Controller
         }
     }
 }
+?>
