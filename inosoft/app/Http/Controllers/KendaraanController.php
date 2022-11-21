@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Interfaces\KendaraanRepositoryInterface;
-
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use DB;
 
@@ -14,10 +15,13 @@ class KendaraanController extends Controller
     {
         $this->kendaraanRepository = $kendaraanRepository;
     }
-    
+
     public function show($id)
     {
-        return Kendaraan::where('id', '=', intval($id))->first();
+        return response()->json([
+            'data' => $this->kendaraanRepository->show($id)
+        ]);
+        //return Kendaraan::where('id', '=', intval($id))->first();
     }
 
     public function getStok($id){

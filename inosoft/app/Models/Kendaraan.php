@@ -9,7 +9,7 @@ class Kendaraan extends Model
     protected $connection = 'mongodb';
     protected $collection = 'Kendaraan';
 
-    public function show($id)
+    public function showt($id)
     {
        return view('show', [
            'Kendaraan' => Kendaraan::where('_id', '=', $id)->first()

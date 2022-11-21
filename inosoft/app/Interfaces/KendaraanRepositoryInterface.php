@@ -1,7 +1,7 @@
 <?php
-use App/Interfaces;
+namespace App\Interfaces;
 
-interface KendaraanRepositoryInterface(){
+interface KendaraanRepositoryInterface{
 	public function show($id);
 
     public function getStok($id);

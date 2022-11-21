@@ -1,9 +1,11 @@
 <?php
-use App/Repositories;
+namespace App\Repositories;
 use App\Interfaces\KendaraanRepositoryInterface;
-use App/Models/Kendaraan;
+use App\Models\Kendaraan;
 
-interface KendaraanRepository(){
+use App\Interfaces\Request;
+
+class KendaraanRepository implements KendaraanRepositoryInterface{
 	public function show($id)
     {
         return Kendaraan::where('id', '=', intval($id))->first();
