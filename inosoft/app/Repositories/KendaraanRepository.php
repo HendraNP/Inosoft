@@ -6,17 +6,17 @@ use App\Models\Kendaraan;
 use App\Interfaces\Request;
 
 class KendaraanRepository implements KendaraanRepositoryInterface{
-	public function show($id)
+    public function show($id)
     {
         return Kendaraan::where('id', '=', intval($id))->first();
     }
 
     public function getStok($id){
-        return Kendaraan::where('id', '=', intval($id))->get(['id','Stok','Motor','Mobil'])->first();
+        return Kendaraan::where('id', '=', intval($id))->get(['id','Stok'])->first();
     }
 
     public function soldReport(){
-        return Kendaraan::get(['id','Sold','Motor','Mobil']);
+        return Kendaraan::get(['id','Sold']);
     }
 
     public function soldItem(Request $request, $id){

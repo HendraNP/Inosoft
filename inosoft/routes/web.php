@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\KendaraanController;
+use App\Http\Controllers\MobilController;
+use App\Http\Controllers\MotorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +30,9 @@ Route::get('/token', function (Request $request) {
 });
 
 Route::get('/Kendaraan/show/{id}', [KendaraanController::class, 'show']);
-Route::get('/Kendaraan/getStok/{id}', 'App\Http\Controllers\KendaraanController@getStok');
-Route::get('/Kendaraan/soldReport', 'App\Http\Controllers\KendaraanController@soldReport');
-Route::put('/Kendaraan/soldItem/{id}', 'App\Http\Controllers\KendaraanController@soldItem');
+Route::get('/Kendaraan/getStok/{id}', [KendaraanController::class, 'getStok']);
+Route::get('/Kendaraan/soldReport', [KendaraanController::class, 'soldReport']);
+Route::put('/Kendaraan/soldItem/{id}', [KendaraanController::class, 'soldItem']);
+
+Route::post('/Motor/newMotor', [MotorController::class, 'newMotor']);
+Route::post('/Mobil/newMobil', [MobilController::class, 'newMobil']);

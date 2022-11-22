@@ -16,37 +16,35 @@ class KendaraanController extends Controller
         $this->kendaraanRepository = $kendaraanRepository;
     }
 
+    public function newUnit(Request $request){
+        return response()->json([
+            'data' => $this->kendaraanRepository->newUnit($request)
+        ]);
+    }
+
     public function show($id)
     {
         return response()->json([
             'data' => $this->kendaraanRepository->show($id)
         ]);
-        //return Kendaraan::where('id', '=', intval($id))->first();
     }
 
     public function getStok($id){
-        return Kendaraan::where('id', '=', intval($id))->get(['id','Stok','Motor','Mobil'])->first();
+        return response()->json([
+            'data' => $this->kendaraanRepository->getStok($id)
+        ]);
+        //return Kendaraan::where('id', '=', intval($id))->get(['id','Stok','Motor','Mobil'])->first();
     }
 
     public function soldReport(){
-        return Kendaraan::get(['id','Sold','Motor','Mobil']);
+        return response()->json([
+            'data' => $this->kendaraanRepository->soldReport()
+        ]);
     }
 
     public function soldItem(Request $request, $id){
-        $kendaraan = Kendaraan::where('id', '=', intval($id))->first();
-        $kendaraan = Kendaraan::find($kendaraan['_id']);
-        $stok = $kendaraan->Stok;
-        $sold = $kendaraan->Sold;
-        $count = $request->count;
-        if($stok < $count){
-            return "Stok tidak cukup";
-        }else{
-            $stok-=$count;
-            $sold+=$count;
-            $kendaraan->Stok = $stok;
-            $kendaraan->Sold = $sold;
-            $kendaraan->save();
-            return "Sold Kendaraan sejumlah ".$count." unit";
-        }
+        return response()->json([
+            'data' => $this->kendaraanRepository->soldItem($request, $id)
+        ]);
     }
 }

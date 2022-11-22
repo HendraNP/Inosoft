@@ -5,6 +5,11 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Interfaces\KendaraanRepositoryInterface;
 use App\Repositories\KendaraanRepository;
+use App\Interfaces\MotorRepositoryInterface;
+use App\Repositories\MotorRepository;
+use App\Interfaces\MobilRepositoryInterface;
+use App\Repositories\MobilRepository;
+
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -15,7 +20,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register() 
     {
-        $this->app->bind(KendaraanRepositoryInterface::class, KendaraanRepository::class);
+        $this->app->bind(KendaraanRepositoryInterface::class, KendaraanRepository::class,MotorRepositoryInterface::class, MotorRepository::class,MobilRepositoryInterface::class, MobilRepository::class);
     }
 
     /**
